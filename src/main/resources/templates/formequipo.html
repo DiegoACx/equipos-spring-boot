@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de Equipos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<style>
+	    body {
+	        background: linear-gradient(135deg, #1a1a1a, #3a0d0d); /* Fondo rojo oscuro y negro */
+	        font-family: 'Arial', sans-serif;
+	        background-color: #1a1a1a;
+	        color: #f8f8f8;
+	    }
+
+	    .card {
+	        border-radius: 15px;
+	        box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
+	        overflow: hidden;
+	    }
+
+	    .card-header {
+	        background-color: #b00020; /* Rojo fuerte */
+	        color: white;
+	        text-align: center;
+	        padding: 1rem;
+	        border-bottom: 2px solid #fff;
+	    }
+
+	    .card-body {
+	        background-color: #ffffff;
+	        padding: 2rem;
+	        color: #1a1a1a;
+	    }
+
+	    .btn-primary {
+	        background-color: #b00020;
+	        border-color: #b00020;
+	        width: 100%;
+	        font-weight: bold;
+	        color: white;
+	    }
+
+	    .btn-primary:hover {
+	        background-color: #8a0018;
+	        border-color: #6a0013;
+	    }
+
+	    .form-control:focus {
+	        border-color: #ff1744;
+	        box-shadow: 0 0 0 .2rem rgba(255, 23, 68, 0.25);
+	    }
+
+	    .form-group {
+	        margin-bottom: 1.5rem;
+	    }
+
+	    .form-text.text-danger {
+	        font-size: 0.875em;
+	    }
+
+	    .d-flex {
+	        justify-content: flex-end;
+	    }
+
+	    .form-control {
+	        border-radius: 10px;
+	    }
+
+	    .btn-secondary {
+	        background-color: #212121;
+	        border-color: #212121;
+	        color: white;
+	    }
+
+	    .btn-secondary:hover {
+	        background-color: #000000;
+	        border-color: #000000;
+	    }
+	</style>
+</head>
+<body>
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3><i class="fas fa-laptop"></i> Formulario de Equipos</h3>
+        </div>
+        <div class="card-body">
+            <form action="#" th:action="@{/guardarequipo}" th:object="${equipo}" method="post">
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="form-group">
+                    <label for="nombre"><i class="fas fa-cogs"></i> Nombre del Equipo:</label>
+                    <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresa el nombre del equipo" required>
+                    <small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="form-text text-danger"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria"><i class="fas fa-tags"></i> Categoría:</label>
+                    <select class="form-control" id="categoria" th:field="*{categoria}" required>
+                        <option value="Laptop">Laptop</option>
+                        <option value="PC de escritorio">PC de escritorio</option>
+                        <option value="Servidor">Servidor</option>
+                        <option value="Impresora">Impresora</option>
+                        <option value="Accesorios">Accesorios</option>
+                    </select>
+                    <small th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" class="form-text text-danger"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="marca"><i class="fas fa-industry"></i> Marca:</label>
+                    <input type="text" class="form-control" id="marca" th:field="*{marca}" placeholder="Ingresa la marca del equipo" required>
+                    <small th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}" class="form-text text-danger"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="precio"><i class="fas fa-dollar-sign"></i> Precio:</label>
+                    <input type="number" class="form-control" id="precio" th:field="*{precio}" placeholder="Ingresa el precio del equipo" required>
+                    <small th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="form-text text-danger"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado"><i class="fas fa-exclamation-triangle"></i> Estado:</label>
+                    <select class="form-control" id="estado" th:field="*{estado}" required>
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="En estado">En estado</option>
+                        <option value="En reparación">En reparación</option>
+                        <option value="Obsoleto">Obsoleto</option>
+                    </select>
+                    <small th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="form-text text-danger"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="observaciones"><i class="fas fa-comments"></i> Observaciones:</label>
+                    <textarea class="form-control" id="observaciones" th:field="*{observaciones}" rows="3" placeholder="Ingresa observaciones adicionales"></textarea>
+                </div>
+
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="/" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
