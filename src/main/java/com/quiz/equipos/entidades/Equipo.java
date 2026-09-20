@@ -1,6 +1,9 @@
 package com.quiz.equipos.entidades;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name="equipos")
@@ -12,14 +15,20 @@ public class Equipo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
-    
+
+    @NotBlank(message = "La categoría es obligatoria")
     private String categoria;
-    
+
+    @NotBlank(message = "La marca es obligatoria")
     private String marca;
-    
+
+    @NotNull(message = "El precio es obligatorio")
+    @Positive(message = "El precio debe ser mayor que cero")
     private Double precio;
-    
+
+    @NotBlank(message = "El estado es obligatorio")
     private String estado;
 
     private String observaciones;

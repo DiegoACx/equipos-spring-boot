@@ -120,6 +120,7 @@
                         <th>Marca</th>
                         <th>Precio</th>
                         <th>Estado</th>
+                        <th>Observaciones</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -131,6 +132,7 @@
                         <td th:text="${equipo.marca}"></td>
                         <td th:text="${equipo.precio}"></td>
                         <td th:text="${equipo.estado}"></td>
+                        <td th:text="${equipo.observaciones}"></td>
                         <td>
                             <a th:href="@{/equipo/editar/{id}(id=${equipo.id})}" class="btn btn-sm btn-primary">
                                 <i class="fas fa-edit"></i> Editar
