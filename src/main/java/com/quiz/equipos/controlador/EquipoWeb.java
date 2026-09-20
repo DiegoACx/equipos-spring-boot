@@ -56,7 +56,7 @@ public class EquipoWeb {
 		
 	}
 	
-	@GetMapping("/equipo/eliminar/{id}")
+	@PostMapping("/equipo/eliminar/{id}")
 	public String eliminarequipo(@PathVariable("id") Long id, Model model) {
 		equiporepositorio.deleteById(id);
 		return "redirect:/verequipo";

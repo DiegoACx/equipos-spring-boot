@@ -135,10 +135,12 @@
                             <a th:href="@{/equipo/editar/{id}(id=${equipo.id})}" class="btn btn-sm btn-primary">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
-                            <a th:href="@{/equipo/eliminar/{id}(id=${equipo.id})}" class="btn btn-sm btn-danger"
-                               onclick="return confirm('¿Estás seguro de que deseas eliminar este equipo?');">
-                                <i class="fas fa-trash-alt"></i> Eliminar
-                            </a>
+                            <form th:action="@{/equipo/eliminar/{id}(id=${equipo.id})}" method="post" class="d-inline"
+                                  onsubmit="return confirm('¿Estás seguro de que deseas eliminar este equipo?');">
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 </tbody>
