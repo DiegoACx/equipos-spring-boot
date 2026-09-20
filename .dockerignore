@@ -1,0 +1,24 @@
+# Fuera del contexto de build: el jar se compila dentro de la imagen.
+target/
+.git/
+.gitignore
+.gitattributes
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDEs
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+
+# Entorno y secretos
+.env
+.env.*
+
+# Docker y documentacion
+Dockerfile
+.dockerignore
+*.md
