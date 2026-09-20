@@ -28,6 +28,8 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<!-- Override temporal: el BOM de Spring Boot 4.1.1 gestiona Tomcat 11.0.24 (3 avisos críticos, corregidos en 11.0.25). Quitar cuando Spring Boot publique un parche con Tomcat >= 11.0.25. -->
+		<tomcat.version>11.0.25</tomcat.version>
 	</properties>
 	<dependencies>
 		<dependency>
